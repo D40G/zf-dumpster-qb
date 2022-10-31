@@ -20,7 +20,7 @@ elseif Config.Minigame == 'ps-ui' then
         if success then return true else return false end
         return false
     end, 3, 10)
-elseif Config.Minigame ~= 'none' then
+elseif Config.Minigame and Config.Minigame ~= 'none' then
     print('[zf-dumpster] Invalid minigame specified in config.lua')
 end
 
