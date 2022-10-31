@@ -1,7 +1,7 @@
 QBCore = exports['qb-core']:GetCoreObject()
 isBusy = false
 
-if Config.Minigame ~= 'none' and Config.Minigame == 'memorygame' then
+if Config.Minigame == 'memorygame' then
     function MiniGame()
         exports['memorygame']:thermiteminigame(5, 3, 3, 15, function()
             return true
@@ -10,11 +10,16 @@ if Config.Minigame ~= 'none' and Config.Minigame == 'memorygame' then
         end)
         return false
     end
-elseif Config.Minigame ~= 'none' and Config.Minigame == 'qb-lock' then
+elseif Config.Minigame == 'qb-lock' then
     function MiniGame()
         local success = exports['qb-lock']:StartLockPickCircle(3, 10)
         return success or false
     end
+elseif Config.Minigame == 'ps-ui' then
+    exports['ps-ui']:Circle(function(success)
+        if success then return true else return false end
+        return false
+    end, 3, 10)
 elseif Config.Minigame ~= 'none' then
     print('[zf-dumpster] Invalid minigame specified in config.lua')
 end
