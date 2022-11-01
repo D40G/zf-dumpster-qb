@@ -3,12 +3,19 @@ isBusy = false
 
 if Config.Minigame == 'memorygame' then
     function MiniGame()
-        exports['memorygame']:thermiteminigame(5, 3, 3, 15, function()
-            return true
+        local success = false
+        local holdResult = true
+
+        exports["memorygame"]:thermiteminigame(5, 3, 3, 15, function()
+            success = true
+            holdResult = false
         end, function()
-            return false
+            success = false
+            holdResult = false
         end)
-        return false
+
+        while holdResult do Wait(100) end
+        return success
     end
 elseif Config.Minigame == 'qb-lock' then
     function MiniGame()
@@ -16,10 +23,13 @@ elseif Config.Minigame == 'qb-lock' then
         return success or false
     end
 elseif Config.Minigame == 'ps-ui' then
-    exports['ps-ui']:Circle(function(success)
-        if success then return true else return false end
-        return false
-    end, 3, 10)
+    function MiniGame()
+        local success = false
+        exports['ps-ui']:Circle(function(result)
+            success = result
+        end, 3, 10)
+        return success
+    end
 elseif Config.Minigame and Config.Minigame ~= 'none' then
     print('[zf-dumpster] Invalid minigame specified in config.lua')
 end

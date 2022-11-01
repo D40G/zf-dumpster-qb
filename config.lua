@@ -16,7 +16,7 @@ Config.ResetOnReboot = false
 Config.ResetTime = 1 -- If Config.ResetOnReboot = false. In minutes
 
 -- ## Minigame Configs
-Config.Minigame = 'qb-lock' -- Available options: false, 'qb-lock', 'memorygame', 'ps-ui'
+Config.Minigame = 'ps-ui' -- Available options: false, 'qb-lock', 'memorygame', 'ps-ui'
 
 -- ## Time Configs
 Config.ProgressTime = 3 -- In secondes
