@@ -39,6 +39,7 @@ local function pGive(playerId, item, amount)
         end
     elseif type(item) == 'table' and amount == 10000 then
         local itemString = ''
+        if #item <= 0 then TriggerClientEvent('QBCore:Notify', playerId, Lang:t('notifies.got_nothing')) return end
         for _,i in pairs(item) do
             Player.Functions.AddItem(i.item, i.amount)
             itemString = i.amount .. 'x ' .. QBCore.Shared.Items[i.item].label .. ', ' .. itemString
